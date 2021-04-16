@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Fakultet informacionih tehnologija";
     var Dobrodoslica = "";
     if (Session["FullName"] == null)
     { Dobrodoslica = "Dobro došli"; }
@@ -126,8 +126,8 @@
 <div class="container-fluid px-0">
     <div class="row">
         <div class="col-md-4">
-            <a href='@Url.Action("Index", "Godina")'>Godina</a>
-            <a href='@Url.Action("Index", "Tipovi_studenata")'>Tipovi studenata</a>
+            @*<a href='@Url.Action("Index", "Godina")'>Godina</a>
+            <a href='@Url.Action("Index", "Tipovi_studenata")'>Tipovi studenata</a>*@
 
             <h2 style="color:darkred">OBAVJEŠTENJA</h2>
             <p>
@@ -189,4 +189,11 @@
             <p>Nastavno osoblje</p>
         </div>
     </div>
+</div>
+<div>
+    <br />
+    <br />
+</div>
+<div>
+    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.077440820771!2d18.39250261572775!3d43.854223547425974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758c9226fcbf2c3%3A0xd068ac74a4ee2826!2sFaculty%20of%20Science!5e0!3m2!1sen!2sba!4v1618443032980!5m2!1sen!2sba" width="1150" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></p>
 </div>

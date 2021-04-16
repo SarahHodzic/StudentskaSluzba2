@@ -28,7 +28,6 @@ namespace StudentskaSluzba2.App_Start
         public virtual DbSet<Godina> Godina { get; set; }
         public virtual DbSet<Godina_Studij> Godina_Studij { get; set; }
         public virtual DbSet<Plan_i_program> Plan_i_program { get; set; }
-        public virtual DbSet<Pohadjanje> Pohadjanje { get; set; }
         public virtual DbSet<Predmet> Predmet { get; set; }
         public virtual DbSet<Predmet_Hijerarhija> Predmet_Hijerarhija { get; set; }
         public virtual DbSet<Prijava> Prijava { get; set; }
@@ -41,5 +40,7 @@ namespace StudentskaSluzba2.App_Start
         public virtual DbSet<Tip_Nastave> Tip_Nastave { get; set; }
         public virtual DbSet<Tipovi_studenata> Tipovi_studenata { get; set; }
         public virtual DbSet<Potvrda_pripadnosti> Potvrda_pripadnosti { get; set; }
+        public virtual DbSet<Pohadjanje> Pohadjanje { get; set; }
+        public virtual DbSet<Zalba> Zalba { get; set; }
     }
 }

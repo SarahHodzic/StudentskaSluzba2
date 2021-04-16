@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Prijavljeni ispiti</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Prijavi ispit", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -18,10 +18,10 @@
             @Html.DisplayNameFor(model => model.Plan_i_program.ID_plan_i_program)
         </th>
         <th>
-            Profesor
+            @Html.DisplayNameFor(model => model.Profesor.Ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Student.Prezime)
+            @Html.DisplayNameFor(model => model.Student.JMBG)
         </th>
         <th></th>
     </tr>
@@ -38,13 +38,13 @@
             @Html.DisplayFor(modelItem => item.Profesor.Ime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Student.Ime)
+            @Html.DisplayFor(modelItem => item.Student.JMBG)
         </td>
-        @*<td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID_Pohadjanje }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID_Pohadjanje }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID_Pohadjanje })
-        </td>*@
+        </td>
     </tr>
 }
 

@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewBag.Title = "Upis";
+}
+<style>
+    h2 {
+        text-align: center;
+        color: darkred;
+    }
+
+    .stm-icon-box__step {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid;
+        border-color: darkred;
+        border-radius: 200px;
+        font-size: 18px;
+        color: #8c1515;
+        float: left;
+    }
+
+    .stm-icon-box__title {
+        font-size: 18px;
+        line-height: 42px;
+        margin-bottom: 13px;
+        float: initial;
+    }
+
+    .box {
+        position: relative;
+        width: 285px;
+        height: 100px;
+        background-color: white;
+        margin: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+        float: right;
+    }
+
+    .login {
+        width: 500px;
+        overflow: hidden;
+        margin: auto;
+        margin: 100px 0 0 350px;
+        padding: 80px;
+        background-color: snow;
+        border-radius: 15px;
+    }
+
+    #naslov {
+        text-align: center;
+        color: darkred;
+        padding: 20px;
+    }
+
+    label {
+        color: black;
+        font-size: 17px;
+    }
+
+    #ime {
+        width: 100%;
+        height: 30px;
+        border-color: lightslategray;
+        border-width: 1px;
+        border-radius: 3px;
+        padding-left: 8px;
+    }
+
+    #prezime {
+        width: 100%;
+        height: 30px;
+        border-color: lightslategray;
+        border-width: 1px;
+        border-radius: 3px;
+        padding-left: 8px;
+    }
+
+    #email {
+        width: 100%;
+        height: 30px;
+        border-color: lightslategray;
+        border-width: 1px;
+        border-radius: 3px;
+        padding-left: 8px;
+    }
+    /*.button {
+        text-align: center;
+        display: block;*/
+    /* margin:auto;*/
+    /*float:left
+    }*/
+    .radio1 {
+        color: black;
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    #text1 {
+        max-width: 100% !important;
+        border-radius: 3px;
+        font-weight: normal !important;
+    }
+
+    .button {
+        background-color: darkred;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+</style>
+<br />
+<h2>Upis-prijavite se na vrijeme!</h2>
+<br />
+<hr />
+<br />
+<h2>Kako funkcioniše proces upisa?</h2>
+<br />
+<hr />
+<br />
+<br />
+<div class="container-fluid px-0">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="stm-icon-box__step" id="div1">1</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Prijava putem forme</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Popunite formular ispod kako bi dobili termin prijave na konkurs i učinili prvi korak ka upisu FIT Fakulteta.</div>
+                </div>
+            </div>
+            <div class="stm-icon-box__step" id="div1">4</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Odobravanje upisa</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Stručni kadar na fakultetu će detaljno i sa pažnjom pročitati Vašu prijavu i odobriti je u najkraćem roku.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stm-icon-box__step" id="div1">2</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Dostava dokumentacije</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Sljedeći korak je da pripremite i dostavite potrebnu dokumentaciju koju možete pronaći <a href="#">ovdje</a> za prijavu na konkurs.</div>
+                </div>
+            </div>
+
+            <div class="stm-icon-box__step" id="div1">5</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Uplata prve rate</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Svi studijski programi se plaćaju u 12 mjesečnih rata što je velika pogodnost studiranja na našem fakultetu.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stm-icon-box__step" id="div1">3</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Polaganje prijemnog</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Sve informacije, pripremni materijal za prijemni kao i ispite sa prethodnih godina možete pronaći na našoj web stranici.</div>
+                </div>
+            </div>
+
+            <div class="stm-icon-box__step" id="div1">6</div>
+            <div class="stm-icon-box__content">
+                <div class="stm-icon-box__title stm-font_color_dark-blue" style="font-size:18px;line-height:42px;margin-bottom:13px;" id="div2">Upisani ste, čestitamo!</div>
+                <div class="box">
+                    <div class="stm-icon-box__descr" style="font-size:15px;line-height:30px;color:#595959">Nakon završenih prethodnih koraka, postali ste student Fakulteta informacionih tehnologija Sarajevo. Čestitamo! Odabrali ste pravi izbor!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="login">
+    <h2 id="naslov">Popunite formular za prijavu:</h2>
+    <form id="login">
+        <label for="Ime">
+            <b>
+                Ime:(obavezno)
+            </b>
+        </label>
+        <input type="text" name="Ime" id="ime">
+        <br><br>
+        <label for="Prezime">
+            <b>
+                Prezime:(obavezno)
+            </b>
+        </label>
+        <input type="text" name="Prezime" id="prezime">
+        <br><br>
+        <label for="Email">
+            <b>
+                Email:(obavezno)
+
+            </b>
+        </label>
+        <input type="text" name="Email" id="email">
+        <br><br>
+        <div class="radio1">
+            <p>Studijski program</p>
+            <input type="radio" id="level" name="studije" value="Osnovne studije" checked />
+            <label for="level">
+                Osnovne studije
+            </label>
+            <input type="radio" id="level1" name="studije" value="Master studije" />
+            <label for="level1">
+                Master studije
+            </label>
+            <br />
+            <input type="radio" id="level2" name="studije" value="Doktorske studije" />
+            <label for="level2">
+                Doktorske studije
+            </label>
+            <br />
+        </div>
+        <div><br /></div>
+        <div class="radio1">
+            <p>Izaberite smjer</p>
+            <input type="radio" id="level" name="studije1" value="Projektni menadžment" checked />
+            <label for="level">
+                Projektni menadžment
+            </label>
+            <br />
+            <input type="radio" id="level1" name="studije1" value="Informacioni sistemi i razvoj softvera" />
+            <label for="level1">
+                Informacioni sistemi i razvoj softvera
+            </label>
+            <br />
+        </div>
+        <div><br /></div>
+        <div class="radio1">
+            <p>Zašto želite upisati naš fakultet?</p>
+            <textarea rows="10" cols="500" name="description" style="box-sizing:border-box" id="text1"></textarea>
+        </div>
+        <div><br /></div>
+        <button type="submit" class="button" onclick="return confirm('Vaša prijava je uspjesno poslana. Hvala što ste aplicirali na naš fakultet!')">Apliciraj</button>
+        <br><br>
+
+    </form>
+</div>

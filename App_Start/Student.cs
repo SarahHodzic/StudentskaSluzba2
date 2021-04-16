@@ -17,9 +17,10 @@ namespace StudentskaSluzba2.App_Start
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Pohadjanjes = new HashSet<Pohadjanje>();
             this.Tipovi_studenata = new HashSet<Tipovi_studenata>();
             this.Prijavas = new HashSet<Prijava>();
+            this.Pohadjanjes = new HashSet<Pohadjanje>();
+            this.Zalbas = new HashSet<Zalba>();
         }
     
         public int ID_student { get; set; }
@@ -28,10 +29,12 @@ namespace StudentskaSluzba2.App_Start
         public string Prezime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pohadjanje> Pohadjanjes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tipovi_studenata> Tipovi_studenata { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prijava> Prijavas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pohadjanje> Pohadjanjes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zalba> Zalbas { get; set; }
     }
 }

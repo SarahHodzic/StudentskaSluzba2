@@ -38,6 +38,7 @@
         .linkovi:active {
             background-color: black;
         }
+
         .dropdown {
             float: left;
         }
@@ -99,15 +100,44 @@
 
         .navbar .glyphicon {
             margin-right: 8px;
-            margin-left:10px;
+            margin-left: 10px;
         }
-        .dropdown .dropdown-content1{
-            display:none;
+        .fa {
+            padding: 10px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 7px 2px;
+            border-radius:5px;
         }
-       .dropdown #potvrda:hover .dropdown-content1 {
-            display: block;
+
+            .fa:hover {
+                opacity:0.8;
+            }
+
+        .fa-facebook {
+            background-color: darkblue;
+            color: white;
+            float: right;
+        }
+        .fa-instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: white;
+            float: right;
+        }
+        .fa-linkedin {
+            background: #0e76a8;
+            color: white;
+            float: right;
+        }
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+            float: right;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="div1" class="navbar navbar-inverse navbar-fixed-top ">
@@ -130,22 +160,17 @@
                     }
                     else
                     {
-                <li class="dropdown">
-                    <a href="#" class="dropbtn"><span class="glyphicon glyphicon-briefcase"></span> Studentska služba <span class="caret"> </span></a>
-                    <div class="dropdown-content">
-                        <a href="#" class="padajucimeni">Upis</a>
-                        <a href="#" class="padajucimeni submeni" id="potvrda">Izdavanje potvrda</a>
-                        <div class="dropdown-content1">
-
-                            <a href="#" class="padajucimeni" id="podmeni1">O polozenim ispitima</a>
-                            <a href="@Url.Action("Index","Student")" class="padajucimeni" id="podmeni">Pripadnost fakultetu</a>
-
-                        </div>
-                        <a href="@Url.Action("Index","Pohadjanje")" class="padajucimeni">Prijava ispita</a>
-                        <a href="#" class="padajucimeni">Prijava izbornog predmeta</a>
-                        <a href="#" class="padajucimeni">Žalbe</a>
-                    </div>
-                </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn"><span class="glyphicon glyphicon-briefcase"></span> Studentska služba <span class="caret"> </span></a>
+                            <div class="dropdown-content">
+                                <a href="@Url.Action("Upis","Home")" class="padajucimeni">Upis</a>
+                                <a href="#" class="padajucimeni">Potvrde o položenim ispitima</a>
+                                <a href="@Url.Action("Index","Student")" class="padajucimeni">Potvrda o pripadnost fakultetu</a>
+                                <a href="@Url.Action("Index","Pohadjanje")" class="padajucimeni">Prijava ispita</a>
+                                <a href="#" class="padajucimeni">Prijava izbornog predmeta</a>
+                                <a href="@Url.Action("Create","Zalba")" class="padajucimeni">Žalbe</a>
+                            </div>
+                        </li>
                     }
                     <li class="listitem"><a class="linkovi " href='@Url.Action("Contact","Home")'><span class="glyphicon glyphicon-earphone"></span> Kontakt</a></li>
                     @if (Session["FullName"] == null)
@@ -157,7 +182,13 @@
                     {
                         <li class="listitem"><a class="linkovi " href='@Url.Action("Logout","Prijava")'><span class="glyphicon glyphicon-off"></span> Odjavi se</a></li>
                     }
+
                 </ul>
+                <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+                <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+                <a href="https://www.linkedin.com/" class="fa fa-linkedin" target="_blank"></a>
+                <a href="https://www.youtube.com/" class="fa fa-youtube" target="_blank"></a>
+
             </div>
         </div>
     </div>

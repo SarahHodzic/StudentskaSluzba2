@@ -47,5 +47,12 @@ namespace Studentska_Sluzba.Controllers
 
             return View();
         }
+        public ActionResult Upis()
+        {
+
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

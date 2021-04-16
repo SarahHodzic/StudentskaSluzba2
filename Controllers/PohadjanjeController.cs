@@ -39,10 +39,9 @@ namespace StudentskaSluzba2.Controllers
         // GET: Pohadjanje/Create
         public ActionResult Create()
         {
-            ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_predmet", "Naziv");
-            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime","Prezime");
-            ViewBag.ID_Student = new SelectList(db.Student, "ID_Student", "Prezime");
-     
+            ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_plan_i_program", "ID_plan_i_program");
+            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime");
+            ViewBag.ID_Student = new SelectList(db.Student, "ID_student", "JMBG");
             return View();
         }
 
@@ -59,9 +58,10 @@ namespace StudentskaSluzba2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            Predmet predmet = new Predmet();
             ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_plan_i_program", "ID_plan_i_program", pohadjanje.ID_plan_i_program);
-            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime", pohadjanje.ID_profesor);
+            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime"+" "+"Prezime", pohadjanje.ID_profesor);
+            ViewBag.ID_predmet = new SelectList(db.Predmet, "ID_pred", "Naziv", predmet.ID_Predmet);
             ViewBag.ID_Student = new SelectList(db.Student, "ID_student", "JMBG", pohadjanje.ID_Student);
             return View(pohadjanje);
         }
