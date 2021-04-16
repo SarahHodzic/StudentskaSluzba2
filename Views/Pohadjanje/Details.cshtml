@@ -1,0 +1,50 @@
+﻿@model StudentskaSluzba2.App_Start.Pohadjanje
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pohadjanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_i_program.ID_plan_i_program)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_i_program.ID_plan_i_program)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesor.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesor.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.JMBG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.JMBG)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Pohadjanje }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var Dobrodoslica = "";
+    if (Session["FullName"] == null)
+    { Dobrodoslica = "Dobro došli"; }
+    else { Dobrodoslica = "Dobro došli " + Session["FullName"].ToString() + "!"; }
+}
+<div class="container py-5">
+    <div class="jumbotron text-green jumbotron-image shadow" style="background-image: url(https://wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-12.jpg)">
+        <h1 class="text-center">@Dobrodoslica</h1>
+        <p class="lead text-center">Fakultet informacionih tehnologija Sarajevo</p>
+        @*  <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+    </div>
+</div>
+<style>
+    .jumbotron h1 {
+        color: white;
+    }
+
+    .jumbotron p {
+        color: white;
+    }
+    /*.container
+    {
+        width:1200px;
+        min-height:50px;
+        background:#fff;
+        margin: 70px auto 0;
+    }*/
+    .container .box {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        background-color: white;
+        margin: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+        .container .box .imgBox {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .container .box .imgBox img {
+                transition: transform 2s;
+            }
+
+    img {
+        object-fit: cover;
+        width: 350px;
+        height: 350px
+    }
+
+    .container .box:hover .imgBox img {
+        transform: scale(1.2);
+    }
+
+    .container .box .details {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0,0,0,.6);
+        transform: scaleY(0);
+        transition: transform .5s;
+    }
+
+    .container .box:hover .details {
+        transform: scaleY(1);
+    }
+
+    .container .box .details .content {
+        position: absolute;
+        top: 150px;
+        transform: translateY(-50%);
+        text-align: center;
+        padding: 15px;
+        color: #fff;
+    }
+
+        .container .box .details .content h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .container .box .details .content p {
+            margin: 10px 0 0;
+            padding: 0;
+        }
+
+    .container .box #text {
+        position: absolute;
+        top: 270px;
+        left: 10px;
+        bottom: 10px;
+        right: 30px;
+        margin: 10px;
+        padding: 15px;
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .box:hover {
+        color: transparent !important;
+    }
+
+    .nastavnici {
+        position: absolute;
+        top: 270px;
+        left: 10px;
+        bottom: 10px;
+        right: 30px;
+        margin: 10px;
+        padding: 15px;
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+    }
+</style>
+
+<div class="container-fluid px-0">
+    <div class="row">
+        <div class="col-md-4">
+            <a href='@Url.Action("Index", "Godina")'>Godina</a>
+            <a href='@Url.Action("Index", "Tipovi_studenata")'>Tipovi studenata</a>
+
+            <h2 style="color:darkred">OBAVJEŠTENJA</h2>
+            <p>
+                <u style="color:blue"> <a href="www.google.com">Konkurs za prijem profesora softver inžinjeringa u akademskoj 2021/2022. godini</a></u>
+            </p>
+
+            <p><u style="color:blue"> <a href="www.google.com">Odluka Ministarstva za obrazovanje, nauku i mlade Kantona Sarajevo o uplati školarina u tri rate u studijskoj 2021/2022. godini</a></u></p>
+            <p><u style="color:blue"> <a href="www.google.com">Prijemni ispit za upis studenata u prvu godinu studija će se održati u ponedjeljak, 5.7.2021 u 11:00.</a></u></p>
+            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+        </div>
+
+        <div class="col-md-4">
+            <img src="https://www.fit.ba/content/public/images/og-image.jpg" class="img-responsive" />
+        </div>
+
+        <div class="col-md-4">
+            <h2 style="color:darkred">AKTUELNOSTI</h2>
+            <p><u style="color:blue"> <a href="www.google.com">Uručene nagrade i priznanja najuspješnijim studentima Fakulteta informacionih tehnologija u akademskoj 2020/21. godini</a></u></p>
+            <p><u style="color:blue"> <a href="www.google.com">COVID-19 update</a></u></p>
+            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="box">
+        <div class="imgBox">
+            <img src="https://i.pinimg.com/564x/6d/00/bb/6d00bb2481ff3d59fac8ae6d3ad70d0c.jpg" />
+        </div>
+        <div id="text">
+            <p>Riječi dekana</p>
+        </div>
+
+        <div class="details">
+
+            <div class="content">
+                <h2>Riječi dekana</h2>
+                <p>
+                    "Konstantno tražimo načine da pružimo najbolje znanje našim studenima za uloženi trud i investirano vrijeme.
+                    Želimo da, kroz društveno odgovorno ponašanje,  ispunimo potrebe naših studenata i društva u cjelini."
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <div class="box">
+        <div class="imgBox">
+            <img src="https://i.pinimg.com/564x/95/e3/55/95e35533f659daaa14de3d16d99932b7.jpg" />
+        </div>
+        <div id="text">
+            <p>Galerija</p>
+        </div>
+    </div>
+    <div class="box">
+        <div class="imgBox">
+            <img src="https://i.pinimg.com/564x/f2/d2/c4/f2d2c4800d8c53f607045d1c83e96e89.jpg" />
+        </div>
+        <div class="nastavnici">
+            <p>Nastavno osoblje</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar {
+            background-color: darkred;
+            overflow: hidden;
+        }
+
+        .listitem {
+            display: block;
+            background-color: darkred;
+        }
+
+            .listitem:hover {
+                background-color: black;
+            }
+
+        .linkovi:hover {
+            background-color: black;
+            color: white !important;
+        }
+
+        .linkovi {
+            color: white !important;
+        }
+
+        .navbar-brand:hover {
+            background-color: black !important;
+        }
+
+        .linkovi:active {
+            background-color: black;
+        }
+        .dropdown {
+            float: left;
+        }
+
+            .dropdown .padajucimeni, .dropbtn {
+                display: inline-block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                .dropdown .padajucimeni:hover, .dropdown:hover .dropbtn {
+                    background-color: darkred;
+                }
+
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content .padajucimeni {
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+                background-color: darkred;
+            }
+
+                .dropdown-content .padajucimeni:hover .dropdown-content1 {
+                    background-color: black;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown .padajucimeni:hover, .dropdown:hover .dropbtn {
+            background-color: black;
+        }
+
+        .dropbtn {
+            color: white !important;
+        }
+
+            .dropbtn:hover {
+                background-color: black !important;
+                color: white !important;
+            }
+
+        .navbar .glyphicon {
+            margin-right: 8px;
+            margin-left:10px;
+        }
+        .dropdown .dropdown-content1{
+            display:none;
+        }
+       .dropdown #potvrda:hover .dropdown-content1 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="linkovi navbar-brand" href='@Url.Action("Index", "Home")'><span class="glyphicon glyphicon-home"></span> Početna</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="listitem"><a class="linkovi " href='@Url.Action("About","Home")'><span class="glyphicon glyphicon-info-sign"></span> O nama</a></li>
+                    @if (Session["FullName"] == null)
+                    {
+                        <li class="listitem"><a class="linkovi " href='@Url.Action("Studentska", "Home")'><span class="glyphicon glyphicon-briefcase"></span> Studentska služba</a></li>
+                    }
+                    else
+                    {
+                <li class="dropdown">
+                    <a href="#" class="dropbtn"><span class="glyphicon glyphicon-briefcase"></span> Studentska služba <span class="caret"> </span></a>
+                    <div class="dropdown-content">
+                        <a href="#" class="padajucimeni">Upis</a>
+                        <a href="#" class="padajucimeni submeni" id="potvrda">Izdavanje potvrda</a>
+                        <div class="dropdown-content1">
+
+                            <a href="#" class="padajucimeni" id="podmeni1">O polozenim ispitima</a>
+                            <a href="@Url.Action("Index","Student")" class="padajucimeni" id="podmeni">Pripadnost fakultetu</a>
+
+                        </div>
+                        <a href="@Url.Action("Index","Pohadjanje")" class="padajucimeni">Prijava ispita</a>
+                        <a href="#" class="padajucimeni">Prijava izbornog predmeta</a>
+                        <a href="#" class="padajucimeni">Žalbe</a>
+                    </div>
+                </li>
+                    }
+                    <li class="listitem"><a class="linkovi " href='@Url.Action("Contact","Home")'><span class="glyphicon glyphicon-earphone"></span> Kontakt</a></li>
+                    @if (Session["FullName"] == null)
+                    {
+                        <li class="listitem"><a class="linkovi " href='@Url.Action("LogIn","Home")'><span class="glyphicon glyphicon-user"></span> Prijava</a></li>
+                        <li class="listitem"><a class="linkovi " href='@Url.Action("Registracija","Home")'><span class="glyphicon glyphicon-user"></span> Registracija</a></li>
+                    }
+                    else
+                    {
+                        <li class="listitem"><a class="linkovi " href='@Url.Action("Logout","Prijava")'><span class="glyphicon glyphicon-off"></span> Odjavi se</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="text-align:center">Copyright &copy; @DateTime.Now.Year - Fakultet informacionih tehnologija</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

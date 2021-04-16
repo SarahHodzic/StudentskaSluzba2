@@ -1,0 +1,42 @@
+﻿@model StudentskaSluzba2.App_Start.Plan_i_program
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Plan_i_program</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Godina_Studij.ID_Godina_Studij)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godina_Studij.ID_Godina_Studij)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Predmet.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Predmet.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tip_Nastave.Tip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tip_Nastave.Tip)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_plan_i_program }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

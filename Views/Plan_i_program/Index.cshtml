@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StudentskaSluzba2.App_Start.Plan_i_program>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Godina_Studij.ID_Godina_Studij)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Predmet.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tip_Nastave.Tip)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Godina_Studij.ID_Godina_Studij)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Predmet.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tip_Nastave.Tip)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_plan_i_program }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_plan_i_program }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_plan_i_program })
+        </td>
+    </tr>
+}
+
+</table>

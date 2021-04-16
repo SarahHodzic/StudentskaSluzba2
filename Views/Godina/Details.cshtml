@@ -1,0 +1,26 @@
+﻿@model StudentskaSluzba2.App_Start.Godina
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Godina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Studij.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Studij.Naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_godina }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

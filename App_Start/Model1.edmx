@@ -1,0 +1,1016 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Studentska_sluzbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Godina">
+          <Key>
+            <PropertyRef Name="ID_godina" />
+          </Key>
+          <Property Name="ID_godina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_studij" Type="int" />
+        </EntityType>
+        <EntityType Name="Godina_Studij">
+          <Key>
+            <PropertyRef Name="ID_Godina_Studij" />
+          </Key>
+          <Property Name="ID_Godina_Studij" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Godina" Type="int" Nullable="false" />
+          <Property Name="ID_Studij" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plan_i_program">
+          <Key>
+            <PropertyRef Name="ID_plan_i_program" />
+          </Key>
+          <Property Name="ID_plan_i_program" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_predmet" Type="int" />
+          <Property Name="ID_tipn" Type="int" />
+          <Property Name="ID_Godina_Studij" Type="int" />
+        </EntityType>
+        <EntityType Name="Pohadjanje">
+          <Key>
+            <PropertyRef Name="ID_Pohadjanje" />
+          </Key>
+          <Property Name="ID_Pohadjanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Student" Type="int" />
+          <Property Name="ID_profesor" Type="int" />
+          <Property Name="ID_plan_i_program" Type="int" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="ID_Predmet" />
+          </Key>
+          <Property Name="ID_Predmet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predmet_Hijerarhija">
+          <Key>
+            <PropertyRef Name="ID_Predmet_Hijerarhija" />
+          </Key>
+          <Property Name="ID_Predmet_Hijerarhija" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Predmet" Type="int" Nullable="false" />
+          <Property Name="ID_Predmet_Uslov" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prijava">
+          <Key>
+            <PropertyRef Name="ID_Prijava" />
+          </Key>
+          <Property Name="ID_Prijava" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Korisnicko_ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tip_Korisnika" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_student" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="ID_Prof" />
+          </Key>
+          <Property Name="ID_Prof" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Smjer">
+          <Key>
+            <PropertyRef Name="ID_smjer" />
+          </Key>
+          <Property Name="ID_smjer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID_student" />
+          </Key>
+          <Property Name="ID_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JMBG" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_tip">
+          <Key>
+            <PropertyRef Name="ID_Student_tip" />
+          </Key>
+          <Property Name="ID_Student_tip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Studij">
+          <Key>
+            <PropertyRef Name="ID_studij" />
+          </Key>
+          <Property Name="ID_studij" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_smjer" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tip_Nastave">
+          <Key>
+            <PropertyRef Name="ID_tip" />
+          </Key>
+          <Property Name="ID_tip" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipovi_studenata">
+          <Key>
+            <PropertyRef Name="ID_Tipovi_studenata" />
+          </Key>
+          <Property Name="ID_Tipovi_studenata" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_student" Type="int" />
+          <Property Name="ID_Student_tip" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Potvrda_pripadnosti">
+          <Key>
+            <PropertyRef Name="JMBG" />
+            <PropertyRef Name="Ime" />
+            <PropertyRef Name="Prezime" />
+            <PropertyRef Name="tip_studenta" />
+          </Key>
+          <Property Name="JMBG" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tip_studenta" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Godina__ID_studi__6442E2C9">
+          <End Role="Studij" Type="Self.Studij" Multiplicity="0..1" />
+          <End Role="Godina" Type="Self.Godina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studij">
+              <PropertyRef Name="ID_studij" />
+            </Principal>
+            <Dependent Role="Godina">
+              <PropertyRef Name="ID_studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Godina_St__ID_St__19DFD96B">
+          <End Role="Studij" Type="Self.Studij" Multiplicity="1" />
+          <End Role="Godina_Studij" Type="Self.Godina_Studij" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studij">
+              <PropertyRef Name="ID_studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij">
+              <PropertyRef Name="ID_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plan_i_pr__ID_pr__09A971A2">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="0..1" />
+          <End Role="Plan_i_program" Type="Self.Plan_i_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Plan_i_program">
+              <PropertyRef Name="ID_predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plan_i_pr__ID_ti__0A9D95DB">
+          <End Role="Tip_Nastave" Type="Self.Tip_Nastave" Multiplicity="0..1" />
+          <End Role="Plan_i_program" Type="Self.Plan_i_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Nastave">
+              <PropertyRef Name="ID_tip" />
+            </Principal>
+            <Dependent Role="Plan_i_program">
+              <PropertyRef Name="ID_tipn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_pl__498EEC8D">
+          <End Role="Plan_i_program" Type="Self.Plan_i_program" Multiplicity="0..1" />
+          <End Role="Pohadjanje" Type="Self.Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan_i_program">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_pr__489AC854">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="Pohadjanje" Type="Self.Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ID_Prof" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_St__47A6A41B">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Pohadjanje" Type="Self.Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predmet_H__ID_Pr__3C34F16F">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
+          <End Role="Predmet_Hijerarhija" Type="Self.Predmet_Hijerarhija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Predmet_Hijerarhija">
+              <PropertyRef Name="ID_Predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predmet_H__ID_Pr__3D2915A8">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
+          <End Role="Predmet_Hijerarhija" Type="Self.Predmet_Hijerarhija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Predmet_Hijerarhija">
+              <PropertyRef Name="ID_Predmet_Uslov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Studij__ID_smjer__03F0984C">
+          <End Role="Smjer" Type="Self.Smjer" Multiplicity="0..1" />
+          <End Role="Studij" Type="Self.Studij" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smjer">
+              <PropertyRef Name="ID_smjer" />
+            </Principal>
+            <Dependent Role="Studij">
+              <PropertyRef Name="ID_smjer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipovi_st__ID_st__41EDCAC5">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Tipovi_studenata" Type="Self.Tipovi_studenata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Tipovi_studenata">
+              <PropertyRef Name="ID_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipovi_st__ID_St__42E1EEFE">
+          <End Role="Student_tip" Type="Self.Student_tip" Multiplicity="0..1" />
+          <End Role="Tipovi_studenata" Type="Self.Tipovi_studenata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_tip">
+              <PropertyRef Name="ID_Student_tip" />
+            </Principal>
+            <Dependent Role="Tipovi_studenata">
+              <PropertyRef Name="ID_Student_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godina_Studij_Godina_Studij">
+          <End Role="Godina_Studij" Type="Self.Godina_Studij" Multiplicity="1" />
+          <End Role="Godina_Studij1" Type="Self.Godina_Studij" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Godina_Studij">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij1">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godina_Studij_Godina_Studij1">
+          <End Role="Godina_Studij" Type="Self.Godina_Studij" Multiplicity="1" />
+          <End Role="Godina_Studij1" Type="Self.Godina_Studij" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Godina_Studij">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij1">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Prijava" Type="Self.Prijava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Prijava">
+              <PropertyRef Name="ID_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Studentska_sluzbaModelStoreContainer">
+          <EntitySet Name="Godina" EntityType="Self.Godina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Godina_Studij" EntityType="Self.Godina_Studij" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan_i_program" EntityType="Self.Plan_i_program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pohadjanje" EntityType="Self.Pohadjanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Predmet_Hijerarhija" EntityType="Self.Predmet_Hijerarhija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prijava" EntityType="Self.Prijava" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smjer" EntityType="Self.Smjer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_tip" EntityType="Self.Student_tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Studij" EntityType="Self.Studij" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_Nastave" EntityType="Self.Tip_Nastave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipovi_studenata" EntityType="Self.Tipovi_studenata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Potvrda_pripadnosti" EntityType="Self.Potvrda_pripadnosti" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Potvrda_pripadnosti].[JMBG] AS [JMBG], 
+    [Potvrda_pripadnosti].[Ime] AS [Ime], 
+    [Potvrda_pripadnosti].[Prezime] AS [Prezime], 
+    [Potvrda_pripadnosti].[tip_studenta] AS [tip_studenta]
+    FROM [dbo].[Potvrda_pripadnosti] AS [Potvrda_pripadnosti]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Godina__ID_studi__6442E2C9" Association="Self.FK__Godina__ID_studi__6442E2C9">
+            <End Role="Studij" EntitySet="Studij" />
+            <End Role="Godina" EntitySet="Godina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Godina_St__ID_St__19DFD96B" Association="Self.FK__Godina_St__ID_St__19DFD96B">
+            <End Role="Studij" EntitySet="Studij" />
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plan_i_pr__ID_pr__09A971A2" Association="Self.FK__Plan_i_pr__ID_pr__09A971A2">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plan_i_pr__ID_ti__0A9D95DB" Association="Self.FK__Plan_i_pr__ID_ti__0A9D95DB">
+            <End Role="Tip_Nastave" EntitySet="Tip_Nastave" />
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_pl__498EEC8D" Association="Self.FK__Pohadjanj__ID_pl__498EEC8D">
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_pr__489AC854" Association="Self.FK__Pohadjanj__ID_pr__489AC854">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_St__47A6A41B" Association="Self.FK__Pohadjanj__ID_St__47A6A41B">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predmet_H__ID_Pr__3C34F16F" Association="Self.FK__Predmet_H__ID_Pr__3C34F16F">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Predmet_Hijerarhija" EntitySet="Predmet_Hijerarhija" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predmet_H__ID_Pr__3D2915A8" Association="Self.FK__Predmet_H__ID_Pr__3D2915A8">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Predmet_Hijerarhija" EntitySet="Predmet_Hijerarhija" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Studij__ID_smjer__03F0984C" Association="Self.FK__Studij__ID_smjer__03F0984C">
+            <End Role="Smjer" EntitySet="Smjer" />
+            <End Role="Studij" EntitySet="Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipovi_st__ID_st__41EDCAC5" Association="Self.FK__Tipovi_st__ID_st__41EDCAC5">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Tipovi_studenata" EntitySet="Tipovi_studenata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipovi_st__ID_St__42E1EEFE" Association="Self.FK__Tipovi_st__ID_St__42E1EEFE">
+            <End Role="Student_tip" EntitySet="Student_tip" />
+            <End Role="Tipovi_studenata" EntitySet="Tipovi_studenata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godina_Studij_Godina_Studij" Association="Self.FK_Godina_Studij_Godina_Studij">
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+            <End Role="Godina_Studij1" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godina_Studij_Godina_Studij1" Association="Self.FK_Godina_Studij_Godina_Studij1">
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+            <End Role="Godina_Studij1" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_student" Association="Self.fk_ID_student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Prijava" EntitySet="Prijava" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Studentska_sluzbaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Studentska_sluzbaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Godina" EntityType="Studentska_sluzbaModel.Godina" />
+          <EntitySet Name="Godina_Studij" EntityType="Studentska_sluzbaModel.Godina_Studij" />
+          <EntitySet Name="Plan_i_program" EntityType="Studentska_sluzbaModel.Plan_i_program" />
+          <EntitySet Name="Pohadjanje" EntityType="Studentska_sluzbaModel.Pohadjanje" />
+          <EntitySet Name="Predmet" EntityType="Studentska_sluzbaModel.Predmet" />
+          <EntitySet Name="Predmet_Hijerarhija" EntityType="Studentska_sluzbaModel.Predmet_Hijerarhija" />
+          <EntitySet Name="Prijava" EntityType="Studentska_sluzbaModel.Prijava" />
+          <EntitySet Name="Profesor" EntityType="Studentska_sluzbaModel.Profesor" />
+          <EntitySet Name="Smjer" EntityType="Studentska_sluzbaModel.Smjer" />
+          <EntitySet Name="Student" EntityType="Studentska_sluzbaModel.Student" />
+          <EntitySet Name="Student_tip" EntityType="Studentska_sluzbaModel.Student_tip" />
+          <EntitySet Name="Studij" EntityType="Studentska_sluzbaModel.Studij" />
+          <EntitySet Name="sysdiagrams" EntityType="Studentska_sluzbaModel.sysdiagram" />
+          <EntitySet Name="Tip_Nastave" EntityType="Studentska_sluzbaModel.Tip_Nastave" />
+          <EntitySet Name="Tipovi_studenata" EntityType="Studentska_sluzbaModel.Tipovi_studenata" />
+          <EntitySet Name="Potvrda_pripadnosti" EntityType="Studentska_sluzbaModel.Potvrda_pripadnosti" />
+          <AssociationSet Name="FK__Godina__ID_studi__6442E2C9" Association="Studentska_sluzbaModel.FK__Godina__ID_studi__6442E2C9">
+            <End Role="Studij" EntitySet="Studij" />
+            <End Role="Godina" EntitySet="Godina" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Godina_St__ID_St__19DFD96B" Association="Studentska_sluzbaModel.FK__Godina_St__ID_St__19DFD96B">
+            <End Role="Studij" EntitySet="Studij" />
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godina_Studij_Godina_Studij" Association="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij">
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+            <End Role="Godina_Studij1" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Godina_Studij_Godina_Studij1" Association="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij1">
+            <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+            <End Role="Godina_Studij1" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plan_i_pr__ID_pr__09A971A2" Association="Studentska_sluzbaModel.FK__Plan_i_pr__ID_pr__09A971A2">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plan_i_pr__ID_ti__0A9D95DB" Association="Studentska_sluzbaModel.FK__Plan_i_pr__ID_ti__0A9D95DB">
+            <End Role="Tip_Nastave" EntitySet="Tip_Nastave" />
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_pl__498EEC8D" Association="Studentska_sluzbaModel.FK__Pohadjanj__ID_pl__498EEC8D">
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_pr__489AC854" Association="Studentska_sluzbaModel.FK__Pohadjanj__ID_pr__489AC854">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pohadjanj__ID_St__47A6A41B" Association="Studentska_sluzbaModel.FK__Pohadjanj__ID_St__47A6A41B">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Pohadjanje" EntitySet="Pohadjanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predmet_H__ID_Pr__3C34F16F" Association="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3C34F16F">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Predmet_Hijerarhija" EntitySet="Predmet_Hijerarhija" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predmet_H__ID_Pr__3D2915A8" Association="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3D2915A8">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Predmet_Hijerarhija" EntitySet="Predmet_Hijerarhija" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Studij__ID_smjer__03F0984C" Association="Studentska_sluzbaModel.FK__Studij__ID_smjer__03F0984C">
+            <End Role="Smjer" EntitySet="Smjer" />
+            <End Role="Studij" EntitySet="Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipovi_st__ID_st__41EDCAC5" Association="Studentska_sluzbaModel.FK__Tipovi_st__ID_st__41EDCAC5">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Tipovi_studenata" EntitySet="Tipovi_studenata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipovi_st__ID_St__42E1EEFE" Association="Studentska_sluzbaModel.FK__Tipovi_st__ID_St__42E1EEFE">
+            <End Role="Student_tip" EntitySet="Student_tip" />
+            <End Role="Tipovi_studenata" EntitySet="Tipovi_studenata" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ID_student" Association="Studentska_sluzbaModel.fk_ID_student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Prijava" EntitySet="Prijava" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Godina">
+          <Key>
+            <PropertyRef Name="ID_godina" />
+          </Key>
+          <Property Name="ID_godina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_studij" Type="Int32" />
+          <NavigationProperty Name="Studij" Relationship="Studentska_sluzbaModel.FK__Godina__ID_studi__6442E2C9" FromRole="Godina" ToRole="Studij" />
+        </EntityType>
+        <EntityType Name="Godina_Studij">
+          <Key>
+            <PropertyRef Name="ID_Godina_Studij" />
+          </Key>
+          <Property Name="ID_Godina_Studij" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Godina" Type="Int32" Nullable="false" />
+          <Property Name="ID_Studij" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Studij" Relationship="Studentska_sluzbaModel.FK__Godina_St__ID_St__19DFD96B" FromRole="Godina_Studij" ToRole="Studij" />
+          <NavigationProperty Name="Godina_Studij1" Relationship="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij" FromRole="Godina_Studij" ToRole="Godina_Studij1" />
+          <NavigationProperty Name="Godina_Studij2" Relationship="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij" FromRole="Godina_Studij1" ToRole="Godina_Studij" />
+          <NavigationProperty Name="Godina_Studij11" Relationship="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij1" FromRole="Godina_Studij" ToRole="Godina_Studij1" />
+          <NavigationProperty Name="Godina_Studij3" Relationship="Studentska_sluzbaModel.FK_Godina_Studij_Godina_Studij1" FromRole="Godina_Studij1" ToRole="Godina_Studij" />
+        </EntityType>
+        <EntityType Name="Plan_i_program">
+          <Key>
+            <PropertyRef Name="ID_plan_i_program" />
+          </Key>
+          <Property Name="ID_plan_i_program" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_predmet" Type="Int32" />
+          <Property Name="ID_tipn" Type="Int32" />
+          <Property Name="ID_Godina_Studij" Type="Int32" />
+          <NavigationProperty Name="Predmet" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_pr__09A971A2" FromRole="Plan_i_program" ToRole="Predmet" />
+          <NavigationProperty Name="Tip_Nastave" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_ti__0A9D95DB" FromRole="Plan_i_program" ToRole="Tip_Nastave" />
+          <NavigationProperty Name="Pohadjanjes" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_pl__498EEC8D" FromRole="Plan_i_program" ToRole="Pohadjanje" />
+        </EntityType>
+        <EntityType Name="Pohadjanje">
+          <Key>
+            <PropertyRef Name="ID_Pohadjanje" />
+          </Key>
+          <Property Name="ID_Pohadjanje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Student" Type="Int32" />
+          <Property Name="ID_profesor" Type="Int32" />
+          <Property Name="ID_plan_i_program" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Plan_i_program" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_pl__498EEC8D" FromRole="Pohadjanje" ToRole="Plan_i_program" />
+          <NavigationProperty Name="Profesor" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_pr__489AC854" FromRole="Pohadjanje" ToRole="Profesor" />
+          <NavigationProperty Name="Student" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_St__47A6A41B" FromRole="Pohadjanje" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="ID_Predmet" />
+          </Key>
+          <Property Name="ID_Predmet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plan_i_program" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_pr__09A971A2" FromRole="Predmet" ToRole="Plan_i_program" />
+          <NavigationProperty Name="Predmet_Hijerarhija" Relationship="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3C34F16F" FromRole="Predmet" ToRole="Predmet_Hijerarhija" />
+          <NavigationProperty Name="Predmet_Hijerarhija1" Relationship="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3D2915A8" FromRole="Predmet" ToRole="Predmet_Hijerarhija" />
+        </EntityType>
+        <EntityType Name="Predmet_Hijerarhija">
+          <Key>
+            <PropertyRef Name="ID_Predmet_Hijerarhija" />
+          </Key>
+          <Property Name="ID_Predmet_Hijerarhija" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Predmet" Type="Int32" Nullable="false" />
+          <Property Name="ID_Predmet_Uslov" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Predmet" Relationship="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3C34F16F" FromRole="Predmet_Hijerarhija" ToRole="Predmet" />
+          <NavigationProperty Name="Predmet1" Relationship="Studentska_sluzbaModel.FK__Predmet_H__ID_Pr__3D2915A8" FromRole="Predmet_Hijerarhija" ToRole="Predmet" />
+        </EntityType>
+        <EntityType Name="Prijava">
+          <Key>
+            <PropertyRef Name="ID_Prijava" />
+          </Key>
+          <Property Name="ID_Prijava" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Korisnicko_ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tip_Korisnika" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_student" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Studentska_sluzbaModel.fk_ID_student" FromRole="Prijava" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="ID_Prof" />
+          </Key>
+          <Property Name="ID_Prof" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pohadjanjes" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_pr__489AC854" FromRole="Profesor" ToRole="Pohadjanje" />
+        </EntityType>
+        <EntityType Name="Smjer">
+          <Key>
+            <PropertyRef Name="ID_smjer" />
+          </Key>
+          <Property Name="ID_smjer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Studijs" Relationship="Studentska_sluzbaModel.FK__Studij__ID_smjer__03F0984C" FromRole="Smjer" ToRole="Studij" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID_student" />
+          </Key>
+          <Property Name="ID_student" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JMBG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pohadjanjes" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_St__47A6A41B" FromRole="Student" ToRole="Pohadjanje" />
+          <NavigationProperty Name="Tipovi_studenata" Relationship="Studentska_sluzbaModel.FK__Tipovi_st__ID_st__41EDCAC5" FromRole="Student" ToRole="Tipovi_studenata" />
+          <NavigationProperty Name="Prijavas" Relationship="Studentska_sluzbaModel.fk_ID_student" FromRole="Student" ToRole="Prijava" />
+        </EntityType>
+        <EntityType Name="Student_tip">
+          <Key>
+            <PropertyRef Name="ID_Student_tip" />
+          </Key>
+          <Property Name="ID_Student_tip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tipovi_studenata" Relationship="Studentska_sluzbaModel.FK__Tipovi_st__ID_St__42E1EEFE" FromRole="Student_tip" ToRole="Tipovi_studenata" />
+        </EntityType>
+        <EntityType Name="Studij">
+          <Key>
+            <PropertyRef Name="ID_studij" />
+          </Key>
+          <Property Name="ID_studij" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_smjer" Type="Int32" />
+          <NavigationProperty Name="Godinas" Relationship="Studentska_sluzbaModel.FK__Godina__ID_studi__6442E2C9" FromRole="Studij" ToRole="Godina" />
+          <NavigationProperty Name="Godina_Studij" Relationship="Studentska_sluzbaModel.FK__Godina_St__ID_St__19DFD96B" FromRole="Studij" ToRole="Godina_Studij" />
+          <NavigationProperty Name="Smjer" Relationship="Studentska_sluzbaModel.FK__Studij__ID_smjer__03F0984C" FromRole="Studij" ToRole="Smjer" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tip_Nastave">
+          <Key>
+            <PropertyRef Name="ID_tip" />
+          </Key>
+          <Property Name="ID_tip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plan_i_program" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_ti__0A9D95DB" FromRole="Tip_Nastave" ToRole="Plan_i_program" />
+        </EntityType>
+        <EntityType Name="Tipovi_studenata">
+          <Key>
+            <PropertyRef Name="ID_Tipovi_studenata" />
+          </Key>
+          <Property Name="ID_Tipovi_studenata" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_student" Type="Int32" />
+          <Property Name="ID_Student_tip" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="Studentska_sluzbaModel.FK__Tipovi_st__ID_st__41EDCAC5" FromRole="Tipovi_studenata" ToRole="Student" />
+          <NavigationProperty Name="Student_tip" Relationship="Studentska_sluzbaModel.FK__Tipovi_st__ID_St__42E1EEFE" FromRole="Tipovi_studenata" ToRole="Student_tip" />
+        </EntityType>
+        <EntityType Name="Potvrda_pripadnosti">
+          <Key>
+            <PropertyRef Name="JMBG" />
+            <PropertyRef Name="Ime" />
+            <PropertyRef Name="Prezime" />
+            <PropertyRef Name="tip_studenta" />
+          </Key>
+          <Property Name="JMBG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tip_studenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Godina__ID_studi__6442E2C9">
+          <End Type="Studentska_sluzbaModel.Studij" Role="Studij" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Godina" Role="Godina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studij">
+              <PropertyRef Name="ID_studij" />
+            </Principal>
+            <Dependent Role="Godina">
+              <PropertyRef Name="ID_studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Godina_St__ID_St__19DFD96B">
+          <End Type="Studentska_sluzbaModel.Studij" Role="Studij" Multiplicity="1" />
+          <End Type="Studentska_sluzbaModel.Godina_Studij" Role="Godina_Studij" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studij">
+              <PropertyRef Name="ID_studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij">
+              <PropertyRef Name="ID_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godina_Studij_Godina_Studij">
+          <End Type="Studentska_sluzbaModel.Godina_Studij" Role="Godina_Studij" Multiplicity="1" />
+          <End Type="Studentska_sluzbaModel.Godina_Studij" Role="Godina_Studij1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Godina_Studij">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij1">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Godina_Studij_Godina_Studij1">
+          <End Type="Studentska_sluzbaModel.Godina_Studij" Role="Godina_Studij" Multiplicity="1" />
+          <End Type="Studentska_sluzbaModel.Godina_Studij" Role="Godina_Studij1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Godina_Studij">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Principal>
+            <Dependent Role="Godina_Studij1">
+              <PropertyRef Name="ID_Godina_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plan_i_pr__ID_pr__09A971A2">
+          <End Type="Studentska_sluzbaModel.Predmet" Role="Predmet" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Plan_i_program" Role="Plan_i_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Plan_i_program">
+              <PropertyRef Name="ID_predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plan_i_pr__ID_ti__0A9D95DB">
+          <End Type="Studentska_sluzbaModel.Tip_Nastave" Role="Tip_Nastave" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Plan_i_program" Role="Plan_i_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Nastave">
+              <PropertyRef Name="ID_tip" />
+            </Principal>
+            <Dependent Role="Plan_i_program">
+              <PropertyRef Name="ID_tipn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_pl__498EEC8D">
+          <End Type="Studentska_sluzbaModel.Plan_i_program" Role="Plan_i_program" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Pohadjanje" Role="Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan_i_program">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_pr__489AC854">
+          <End Type="Studentska_sluzbaModel.Profesor" Role="Profesor" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Pohadjanje" Role="Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ID_Prof" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_profesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pohadjanj__ID_St__47A6A41B">
+          <End Type="Studentska_sluzbaModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Pohadjanje" Role="Pohadjanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Pohadjanje">
+              <PropertyRef Name="ID_Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predmet_H__ID_Pr__3C34F16F">
+          <End Type="Studentska_sluzbaModel.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="Studentska_sluzbaModel.Predmet_Hijerarhija" Role="Predmet_Hijerarhija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Predmet_Hijerarhija">
+              <PropertyRef Name="ID_Predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predmet_H__ID_Pr__3D2915A8">
+          <End Type="Studentska_sluzbaModel.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="Studentska_sluzbaModel.Predmet_Hijerarhija" Role="Predmet_Hijerarhija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="ID_Predmet" />
+            </Principal>
+            <Dependent Role="Predmet_Hijerarhija">
+              <PropertyRef Name="ID_Predmet_Uslov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Studij__ID_smjer__03F0984C">
+          <End Type="Studentska_sluzbaModel.Smjer" Role="Smjer" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Studij" Role="Studij" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smjer">
+              <PropertyRef Name="ID_smjer" />
+            </Principal>
+            <Dependent Role="Studij">
+              <PropertyRef Name="ID_smjer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipovi_st__ID_st__41EDCAC5">
+          <End Type="Studentska_sluzbaModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Tipovi_studenata" Role="Tipovi_studenata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Tipovi_studenata">
+              <PropertyRef Name="ID_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipovi_st__ID_St__42E1EEFE">
+          <End Type="Studentska_sluzbaModel.Student_tip" Role="Student_tip" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Tipovi_studenata" Role="Tipovi_studenata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_tip">
+              <PropertyRef Name="ID_Student_tip" />
+            </Principal>
+            <Dependent Role="Tipovi_studenata">
+              <PropertyRef Name="ID_Student_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ID_student">
+          <End Type="Studentska_sluzbaModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Prijava" Role="Prijava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Prijava">
+              <PropertyRef Name="ID_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Studentska_sluzbaModelStoreContainer" CdmEntityContainer="Studentska_sluzbaEntities">
+          <EntitySetMapping Name="Godina">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Godina">
+              <MappingFragment StoreEntitySet="Godina">
+                <ScalarProperty Name="ID_studij" ColumnName="ID_studij" />
+                <ScalarProperty Name="ID_godina" ColumnName="ID_godina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Godina_Studij">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Godina_Studij">
+              <MappingFragment StoreEntitySet="Godina_Studij">
+                <ScalarProperty Name="ID_Studij" ColumnName="ID_Studij" />
+                <ScalarProperty Name="ID_Godina" ColumnName="ID_Godina" />
+                <ScalarProperty Name="ID_Godina_Studij" ColumnName="ID_Godina_Studij" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan_i_program">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Plan_i_program">
+              <MappingFragment StoreEntitySet="Plan_i_program">
+                <ScalarProperty Name="ID_Godina_Studij" ColumnName="ID_Godina_Studij" />
+                <ScalarProperty Name="ID_tipn" ColumnName="ID_tipn" />
+                <ScalarProperty Name="ID_predmet" ColumnName="ID_predmet" />
+                <ScalarProperty Name="ID_plan_i_program" ColumnName="ID_plan_i_program" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pohadjanje">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Pohadjanje">
+              <MappingFragment StoreEntitySet="Pohadjanje">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_plan_i_program" ColumnName="ID_plan_i_program" />
+                <ScalarProperty Name="ID_profesor" ColumnName="ID_profesor" />
+                <ScalarProperty Name="ID_Student" ColumnName="ID_Student" />
+                <ScalarProperty Name="ID_Pohadjanje" ColumnName="ID_Pohadjanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Predmet">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Predmet">
+              <MappingFragment StoreEntitySet="Predmet">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_Predmet" ColumnName="ID_Predmet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Predmet_Hijerarhija">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Predmet_Hijerarhija">
+              <MappingFragment StoreEntitySet="Predmet_Hijerarhija">
+                <ScalarProperty Name="ID_Predmet_Uslov" ColumnName="ID_Predmet_Uslov" />
+                <ScalarProperty Name="ID_Predmet" ColumnName="ID_Predmet" />
+                <ScalarProperty Name="ID_Predmet_Hijerarhija" ColumnName="ID_Predmet_Hijerarhija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prijava">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Prijava">
+              <MappingFragment StoreEntitySet="Prijava">
+                <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tip_Korisnika" ColumnName="Tip_Korisnika" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+                <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
+                <ScalarProperty Name="ID_Prijava" ColumnName="ID_Prijava" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesor">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Profesor">
+              <MappingFragment StoreEntitySet="Profesor">
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="ID_Prof" ColumnName="ID_Prof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smjer">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Smjer">
+              <MappingFragment StoreEntitySet="Smjer">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_smjer" ColumnName="ID_smjer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+                <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_tip">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Student_tip">
+              <MappingFragment StoreEntitySet="Student_tip">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_Student_tip" ColumnName="ID_Student_tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studij">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Studij">
+              <MappingFragment StoreEntitySet="Studij">
+                <ScalarProperty Name="ID_smjer" ColumnName="ID_smjer" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_studij" ColumnName="ID_studij" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_Nastave">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Tip_Nastave">
+              <MappingFragment StoreEntitySet="Tip_Nastave">
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="ID_tip" ColumnName="ID_tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipovi_studenata">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Tipovi_studenata">
+              <MappingFragment StoreEntitySet="Tipovi_studenata">
+                <ScalarProperty Name="ID_Student_tip" ColumnName="ID_Student_tip" />
+                <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+                <ScalarProperty Name="ID_Tipovi_studenata" ColumnName="ID_Tipovi_studenata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Potvrda_pripadnosti">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Potvrda_pripadnosti">
+              <MappingFragment StoreEntitySet="Potvrda_pripadnosti">
+                <ScalarProperty Name="tip_studenta" ColumnName="tip_studenta" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

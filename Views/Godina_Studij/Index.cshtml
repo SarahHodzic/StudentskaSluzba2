@@ -1,0 +1,51 @@
+﻿@model IEnumerable<StudentskaSluzba2.App_Start.Godina_Studij>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Godina.ID_godina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Studij.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Godina_Studij1.ID_Godina_Studij)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Godina_Studij2.ID_Godina_Studij)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Godina.ID_godina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Studij.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Godina_Studij1.ID_Godina_Studij)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Godina_Studij2.ID_Godina_Studij)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Godina_Studij }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Godina_Studij }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Godina_Studij })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model StudentskaSluzba2.App_Start.Godina_Studij
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Godina_Studij</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Godina.ID_godina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godina.ID_godina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Studij.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Studij.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Godina_Studij1.ID_Godina_Studij)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godina_Studij1.ID_Godina_Studij)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Godina_Studij2.ID_Godina_Studij)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godina_Studij2.ID_Godina_Studij)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Godina_Studij }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
