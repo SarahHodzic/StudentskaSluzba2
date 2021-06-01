@@ -145,7 +145,7 @@ namespace Studentska_Sluzba.Controllers
                 //db.SaveChangesAsync();
                 db.SaveChanges();
                 // return RedirectToAction("Index", "Home");
-                var data = db.Prijava.Where(s => s.Email.Equals(Email) && s.Lozinka.Equals(Lozinka)).ToList();
+                 var data = db.Prijava.Where(s => s.Email.Equals(Email) && s.Lozinka.Equals(Lozinka)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session

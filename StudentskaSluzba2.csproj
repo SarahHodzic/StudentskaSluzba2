@@ -134,6 +134,12 @@
     <Compile Include="App_Start\Godina_Studij.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\Izborni.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Izborni_predmet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,6 +198,15 @@
     <Compile Include="App_Start\Tip_Nastave.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\v_Pohadjanje.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\v_Profesor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\v_Student.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Zalba.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -210,6 +225,7 @@
     <Compile Include="Controllers\StudijController.cs" />
     <Compile Include="Controllers\Tipovi_studenataController.cs" />
     <Compile Include="Controllers\Tip_NastaveController.cs" />
+    <Compile Include="Controllers\v_PohadjanjeController.cs" />
     <Compile Include="Controllers\ZalbaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -349,6 +365,12 @@
     <Content Include="Views\Zalba\Edit.cshtml" />
     <Content Include="Views\Zalba\Index.cshtml" />
     <Content Include="Views\Home\Upis.cshtml" />
+    <Content Include="Views\Home\Potvrde.cshtml" />
+    <Content Include="Views\v_Pohadjanje\Create.cshtml" />
+    <Content Include="Views\v_Pohadjanje\Delete.cshtml" />
+    <Content Include="Views\v_Pohadjanje\Details.cshtml" />
+    <Content Include="Views\v_Pohadjanje\Edit.cshtml" />
+    <Content Include="Views\v_Pohadjanje\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,24 +12,17 @@ namespace StudentskaSluzba2.App_Start
     using System;
     using System.Collections.Generic;
     
-    public partial class Plan_i_program
+    public partial class Izborni
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Plan_i_program()
+        public Izborni()
         {
-            this.Pohadjanjes = new HashSet<Pohadjanje>();
             this.Izborni_predmet = new HashSet<Izborni_predmet>();
         }
     
-        public int ID_plan_i_program { get; set; }
-        public Nullable<int> ID_predmet { get; set; }
-        public Nullable<int> ID_tipn { get; set; }
-        public Nullable<int> ID_Godina_Studij { get; set; }
+        public int ID_izb { get; set; }
+        public string Naziv { get; set; }
     
-        public virtual Predmet Predmet { get; set; }
-        public virtual Tip_Nastave Tip_Nastave { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pohadjanje> Pohadjanjes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Izborni_predmet> Izborni_predmet { get; set; }
     }

@@ -21,6 +21,7 @@ namespace StudentskaSluzba2.App_Start
             this.Prijavas = new HashSet<Prijava>();
             this.Pohadjanjes = new HashSet<Pohadjanje>();
             this.Zalbas = new HashSet<Zalba>();
+            this.Izborni_predmet = new HashSet<Izborni_predmet>();
         }
     
         public int ID_student { get; set; }
@@ -36,5 +37,7 @@ namespace StudentskaSluzba2.App_Start
         public virtual ICollection<Pohadjanje> Pohadjanjes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zalba> Zalbas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Izborni_predmet> Izborni_predmet { get; set; }
     }
 }

@@ -20,6 +20,23 @@
           <Property Name="ID_Godina" Type="int" Nullable="false" />
           <Property Name="ID_Studij" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Izborni">
+          <Key>
+            <PropertyRef Name="ID_izb" />
+          </Key>
+          <Property Name="ID_izb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Izborni_predmet">
+          <Key>
+            <PropertyRef Name="ID_Izborni" />
+          </Key>
+          <Property Name="ID_Izborni" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Student" Type="int" />
+          <Property Name="ID_plan_i_program" Type="int" />
+          <Property Name="ID_izb" Type="int" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Plan_i_program">
           <Key>
             <PropertyRef Name="ID_plan_i_program" />
@@ -150,18 +167,38 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tip_studenta" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Godina__ID_studi__6442E2C9">
-          <End Role="Studij" Type="Self.Studij" Multiplicity="0..1" />
-          <End Role="Godina" Type="Self.Godina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Studij">
-              <PropertyRef Name="ID_studij" />
-            </Principal>
-            <Dependent Role="Godina">
-              <PropertyRef Name="ID_studij" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Studentska_sluzba.dbo.v_Pohadjanje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Pohadjanje">
+          <Key>
+            <PropertyRef Name="Student" />
+            <PropertyRef Name="Profesor" />
+          </Key>
+          <Property Name="Student" Type="nvarchar" MaxLength="101" Nullable="false" />
+          <Property Name="Profesor" Type="nvarchar" MaxLength="101" Nullable="false" />
+          <Property Name="Predmet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Akademska_godina" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Studentska_sluzba.dbo.v_Profesor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Profesor">
+          <Key>
+            <PropertyRef Name="ID_Prof" />
+            <PropertyRef Name="ProfIme" />
+          </Key>
+          <Property Name="ID_Prof" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfIme" Type="nvarchar" MaxLength="101" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Studentska_sluzba.dbo.v_Student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Student">
+          <Key>
+            <PropertyRef Name="ID_student" />
+            <PropertyRef Name="ImePrezime" />
+          </Key>
+          <Property Name="ID_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImePrezime" Type="nvarchar" MaxLength="101" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Godina_St__ID_St__19DFD96B">
           <End Role="Studij" Type="Self.Studij" Multiplicity="1" />
           <End Role="Godina_Studij" Type="Self.Godina_Studij" Multiplicity="*" />
@@ -171,6 +208,42 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
             </Principal>
             <Dependent Role="Godina_Studij">
               <PropertyRef Name="ID_Studij" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Izborni_p__ID_iz__589C25F3">
+          <End Role="Izborni" Type="Self.Izborni" Multiplicity="0..1" />
+          <End Role="Izborni_predmet" Type="Self.Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Izborni">
+              <PropertyRef Name="ID_izb" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_izb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Izborni_p__ID_pl__57A801BA">
+          <End Role="Plan_i_program" Type="Self.Plan_i_program" Multiplicity="0..1" />
+          <End Role="Izborni_predmet" Type="Self.Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan_i_program">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Izborni_p__ID_St__56B3DD81">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Izborni_predmet" Type="Self.Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_Student" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -345,6 +418,8 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
         <EntityContainer Name="Studentska_sluzbaModelStoreContainer">
           <EntitySet Name="Godina" EntityType="Self.Godina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Godina_Studij" EntityType="Self.Godina_Studij" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Izborni" EntityType="Self.Izborni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Izborni_predmet" EntityType="Self.Izborni_predmet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plan_i_program" EntityType="Self.Plan_i_program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pohadjanje" EntityType="Self.Pohadjanje" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
@@ -367,13 +442,41 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
     [Potvrda_pripadnosti].[tip_studenta] AS [tip_studenta]
     FROM [dbo].[Potvrda_pripadnosti] AS [Potvrda_pripadnosti]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Godina__ID_studi__6442E2C9" Association="Self.FK__Godina__ID_studi__6442E2C9">
-            <End Role="Studij" EntitySet="Studij" />
-            <End Role="Godina" EntitySet="Godina" />
-          </AssociationSet>
+          <EntitySet Name="v_Pohadjanje" EntityType="Self.v_Pohadjanje" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Pohadjanje].[Student] AS [Student], 
+    [v_Pohadjanje].[Profesor] AS [Profesor], 
+    [v_Pohadjanje].[Predmet] AS [Predmet], 
+    [v_Pohadjanje].[Akademska_godina] AS [Akademska_godina]
+    FROM [dbo].[v_Pohadjanje] AS [v_Pohadjanje]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Profesor" EntityType="Self.v_Profesor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Profesor].[ID_Prof] AS [ID_Prof], 
+    [v_Profesor].[ProfIme] AS [ProfIme]
+    FROM [dbo].[v_Profesor] AS [v_Profesor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Student" EntityType="Self.v_Student" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Student].[ID_student] AS [ID_student], 
+    [v_Student].[ImePrezime] AS [ImePrezime]
+    FROM [dbo].[v_Student] AS [v_Student]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Godina_St__ID_St__19DFD96B" Association="Self.FK__Godina_St__ID_St__19DFD96B">
             <End Role="Studij" EntitySet="Studij" />
             <End Role="Godina_Studij" EntitySet="Godina_Studij" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Izborni_p__ID_iz__589C25F3" Association="Self.FK__Izborni_p__ID_iz__589C25F3">
+            <End Role="Izborni" EntitySet="Izborni" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Izborni_p__ID_pl__57A801BA" Association="Self.FK__Izborni_p__ID_pl__57A801BA">
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Izborni_p__ID_St__56B3DD81" Association="Self.FK__Izborni_p__ID_St__56B3DD81">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
           </AssociationSet>
           <AssociationSet Name="FK__Plan_i_pr__ID_pr__09A971A2" Association="Self.FK__Plan_i_pr__ID_pr__09A971A2">
             <End Role="Predmet" EntitySet="Predmet" />
@@ -518,6 +621,23 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
             <End Role="Student" EntitySet="Student" />
             <End Role="Zalba" EntitySet="Zalba" />
           </AssociationSet>
+          <EntitySet Name="v_Student" EntityType="Studentska_sluzbaModel.v_Student" />
+          <EntitySet Name="v_Profesor" EntityType="Studentska_sluzbaModel.v_Profesor" />
+          <EntitySet Name="v_Pohadjanje" EntityType="Studentska_sluzbaModel.v_Pohadjanje" />
+          <EntitySet Name="Izborni" EntityType="Studentska_sluzbaModel.Izborni" />
+          <EntitySet Name="Izborni_predmet" EntityType="Studentska_sluzbaModel.Izborni_predmet" />
+          <AssociationSet Name="FK__Izborni_p__ID_iz__589C25F3" Association="Studentska_sluzbaModel.FK__Izborni_p__ID_iz__589C25F3">
+            <End Role="Izborni" EntitySet="Izborni" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Izborni_p__ID_pl__57A801BA" Association="Studentska_sluzbaModel.FK__Izborni_p__ID_pl__57A801BA">
+            <End Role="Plan_i_program" EntitySet="Plan_i_program" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Izborni_p__ID_St__56B3DD81" Association="Studentska_sluzbaModel.FK__Izborni_p__ID_St__56B3DD81">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Izborni_predmet" EntitySet="Izborni_predmet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Godina">
           <Key>
@@ -551,6 +671,7 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
           <NavigationProperty Name="Predmet" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_pr__09A971A2" FromRole="Plan_i_program" ToRole="Predmet" />
           <NavigationProperty Name="Tip_Nastave" Relationship="Studentska_sluzbaModel.FK__Plan_i_pr__ID_ti__0A9D95DB" FromRole="Plan_i_program" ToRole="Tip_Nastave" />
           <NavigationProperty Name="Pohadjanjes" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_pl__498EEC8D" FromRole="Plan_i_program" ToRole="Pohadjanje" />
+          <NavigationProperty Name="Izborni_predmet" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_pl__57A801BA" FromRole="Plan_i_program" ToRole="Izborni_predmet" />
         </EntityType>
         <EntityType Name="Predmet">
           <Key>
@@ -613,6 +734,7 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
           <NavigationProperty Name="Prijavas" Relationship="Studentska_sluzbaModel.fk_ID_student" FromRole="Student" ToRole="Prijava" />
           <NavigationProperty Name="Pohadjanjes" Relationship="Studentska_sluzbaModel.FK__Pohadjanj__ID_St__47A6A41B" FromRole="Student" ToRole="Pohadjanje" />
           <NavigationProperty Name="Zalbas" Relationship="Studentska_sluzbaModel.FK__Zalba__ID_Studen__0880433F" FromRole="Student" ToRole="Zalba" />
+          <NavigationProperty Name="Izborni_predmet" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_St__56B3DD81" FromRole="Student" ToRole="Izborni_predmet" />
         </EntityType>
         <EntityType Name="Student_tip">
           <Key>
@@ -886,6 +1008,89 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_Student">
+          <Key>
+            <PropertyRef Name="ID_student" />
+            <PropertyRef Name="ImePrezime" />
+          </Key>
+          <Property Name="ID_student" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImePrezime" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Profesor">
+          <Key>
+            <PropertyRef Name="ID_Prof" />
+            <PropertyRef Name="ProfIme" />
+          </Key>
+          <Property Name="ID_Prof" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfIme" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Pohadjanje">
+          <Key>
+            <PropertyRef Name="Student" />
+            <PropertyRef Name="Profesor" />
+          </Key>
+          <Property Name="Student" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Profesor" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Predmet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Akademska_godina" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Izborni">
+          <Key>
+            <PropertyRef Name="ID_izb" />
+          </Key>
+          <Property Name="ID_izb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Izborni_predmet" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_iz__589C25F3" FromRole="Izborni" ToRole="Izborni_predmet" />
+        </EntityType>
+        <EntityType Name="Izborni_predmet">
+          <Key>
+            <PropertyRef Name="ID_Izborni" />
+          </Key>
+          <Property Name="ID_Izborni" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Student" Type="Int32" />
+          <Property Name="ID_plan_i_program" Type="Int32" />
+          <Property Name="ID_izb" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Izborni" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_iz__589C25F3" FromRole="Izborni_predmet" ToRole="Izborni" />
+          <NavigationProperty Name="Plan_i_program" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_pl__57A801BA" FromRole="Izborni_predmet" ToRole="Plan_i_program" />
+          <NavigationProperty Name="Student" Relationship="Studentska_sluzbaModel.FK__Izborni_p__ID_St__56B3DD81" FromRole="Izborni_predmet" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK__Izborni_p__ID_iz__589C25F3">
+          <End Type="Studentska_sluzbaModel.Izborni" Role="Izborni" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Izborni_predmet" Role="Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Izborni">
+              <PropertyRef Name="ID_izb" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_izb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Izborni_p__ID_pl__57A801BA">
+          <End Type="Studentska_sluzbaModel.Plan_i_program" Role="Plan_i_program" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Izborni_predmet" Role="Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan_i_program">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_plan_i_program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Izborni_p__ID_St__56B3DD81">
+          <End Type="Studentska_sluzbaModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="Studentska_sluzbaModel.Izborni_predmet" Role="Izborni_predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID_student" />
+            </Principal>
+            <Dependent Role="Izborni_predmet">
+              <PropertyRef Name="ID_Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1046,6 +1251,51 @@ warning 6002: The table/view 'Studentska_sluzba.dbo.Potvrda_pripadnosti' does no
               <MappingFragment StoreEntitySet="Zalba">
                 <ScalarProperty Name="ID_Student" ColumnName="ID_Student" />
                 <ScalarProperty Name="ID_Zalba" ColumnName="ID_Zalba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Student">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.v_Student">
+              <MappingFragment StoreEntitySet="v_Student">
+                <ScalarProperty Name="ImePrezime" ColumnName="ImePrezime" />
+                <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Profesor">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.v_Profesor">
+              <MappingFragment StoreEntitySet="v_Profesor">
+                <ScalarProperty Name="ProfIme" ColumnName="ProfIme" />
+                <ScalarProperty Name="ID_Prof" ColumnName="ID_Prof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Pohadjanje">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.v_Pohadjanje">
+              <MappingFragment StoreEntitySet="v_Pohadjanje">
+                <ScalarProperty Name="Akademska_godina" ColumnName="Akademska_godina" />
+                <ScalarProperty Name="Predmet" ColumnName="Predmet" />
+                <ScalarProperty Name="Profesor" ColumnName="Profesor" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Izborni">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Izborni">
+              <MappingFragment StoreEntitySet="Izborni">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_izb" ColumnName="ID_izb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Izborni_predmet">
+            <EntityTypeMapping TypeName="Studentska_sluzbaModel.Izborni_predmet">
+              <MappingFragment StoreEntitySet="Izborni_predmet">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_izb" ColumnName="ID_izb" />
+                <ScalarProperty Name="ID_plan_i_program" ColumnName="ID_plan_i_program" />
+                <ScalarProperty Name="ID_Student" ColumnName="ID_Student" />
+                <ScalarProperty Name="ID_Izborni" ColumnName="ID_Izborni" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

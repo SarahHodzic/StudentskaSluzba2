@@ -2,28 +2,37 @@
 
 @{
     ViewBag.Title = "Create";
+    int ID_Student = 0;
 }
 
-<h2>Create</h2>
+<h2>Prijava ispita</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create2", "Pohadjanje", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Pohadjanje</h4>
+    @*public ActionResult Create([Bind(Include = "ID_Pohadjanje,ID_Student,ID_profesor,ID_plan_i_program,Datum")] Pohadjanje pohadjanje)*@
+
+    @*<h4>Pohadjanje</h4>*@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.ID_Student, "ID_Student", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ID_Student, "Student", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("ID_Student", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ID_Student, "", new { @class = "text-danger" })
+            @if (Session["FullName"] != null)
+            {
+                @Html.Label(Session["FullName"].ToString(), htmlAttributes: new { @class = "form-control" });
+                ID_Student = (int)Session["idstudent"];
+            }
+
+            @*@Html.DropDownList("ID_Student",null, htmlAttributes: new { @class = "form-control" })*@
+            @*@Html.ValidationMessageFor(model => model.ID_Student, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ID_profesor, "ID_profesor", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ID_profesor, "Profesor", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("ID_profesor", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ID_profesor, "", new { @class = "text-danger" })
@@ -31,7 +40,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ID_plan_i_program, "ID_plan_i_program", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ID_plan_i_program, "Godina", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("ID_plan_i_program", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ID_plan_i_program, "", new { @class = "text-danger" })
@@ -52,34 +61,34 @@
             Predmet
         </label>
         <div class="col-md-10">
-            @*@Html.DropDownList("ID_Student", null, htmlAttributes: new { @class = "form-control" })*@
-            <select class="form-control">
-                <option value="3" selected>
-                    Baze podataka
-                </option>
-                <option value="4">
-                    Umjetna inteligencija
-                </option>
-                <option value="5">
-                    Web Programiranje
-                </option>
-                <option value="6">
-                    Algoritmi
-                </option>
-                <option value="7">
-                    Razvoj mobilnih aplikacija
-                </option>
-                <option value="8">
-                    Strukture podataka
-                </option>
-            </select>
-            @*@Html.ValidationMessageFor(model => model.ID_Student, "", new { @class = "text-danger" })*@
+            @Html.DropDownList("ID_predmet", null, htmlAttributes: new { @class = "form-control" })
+            @*<select class="form-control">
+                    <option value="3" selected>
+                        Baze podataka
+                    </option>
+                    <option value="4">
+                        Umjetna inteligencija
+                    </option>
+                    <option value="5">
+                        Web Programiranje
+                    </option>
+                    <option value="6">
+                        Algoritmi
+                    </option>
+                    <option value="7">
+                        Razvoj mobilnih aplikacija
+                    </option>
+                    <option value="8">
+                        Strukture podataka
+                    </option>
+                </select>*@
+            @*@Html.ValidationMessageFor(model => model.ID_predmet, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Prijavi" class="btn btn-default" />
         </div>
     </div>
 </div>

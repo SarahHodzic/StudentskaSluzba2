@@ -42,5 +42,10 @@ namespace StudentskaSluzba2.App_Start
         public virtual DbSet<Potvrda_pripadnosti> Potvrda_pripadnosti { get; set; }
         public virtual DbSet<Pohadjanje> Pohadjanje { get; set; }
         public virtual DbSet<Zalba> Zalba { get; set; }
+        public virtual DbSet<v_Student> v_Student { get; set; }
+        public virtual DbSet<v_Profesor> v_Profesor { get; set; }
+        public virtual DbSet<v_Pohadjanje> v_Pohadjanje { get; set; }
+        public virtual DbSet<Izborni> Izborni { get; set; }
+        public virtual DbSet<Izborni_predmet> Izborni_predmet { get; set; }
     }
 }

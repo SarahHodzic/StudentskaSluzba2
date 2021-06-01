@@ -17,8 +17,10 @@ namespace StudentskaSluzba2.Controllers
         // GET: Pohadjanje
         public ActionResult Index()
         {
-            var pohadjanje = db.Pohadjanje.Include(p => p.Plan_i_program).Include(p => p.Profesor).Include(p => p.Student);
-            return View(pohadjanje.ToList());
+            //var pohadjanje = db.Pohadjanje.Include(p => p.Plan_i_program).Include(p => p.Profesor).Include(p => p.Student);
+            //var v_Pohadjanje = db.v_Pohadjanje.Include(p => p.Student).Include(p => p.Profesor).Include(p => p.Predmet).Include(p => p.Akademska_godina);
+            //return View(v_Pohadjanje.ToList());
+            return View(db.v_Pohadjanje.ToList());
         }
 
         // GET: Pohadjanje/Details/5
@@ -40,8 +42,9 @@ namespace StudentskaSluzba2.Controllers
         public ActionResult Create()
         {
             ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_plan_i_program", "ID_plan_i_program");
-            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime");
-            ViewBag.ID_Student = new SelectList(db.Student, "ID_student", "JMBG");
+            ViewBag.ID_profesor = new SelectList(db.v_Profesor, "ID_Prof", "ProfIme");
+            ViewBag.ID_Student = new SelectList(db.v_Student, "ID_student", "ImePrezime");
+            ViewBag.ID_Predmet = new SelectList(db.Predmet, "ID_predmet", "Naziv");
             return View();
         }
 
@@ -61,6 +64,36 @@ namespace StudentskaSluzba2.Controllers
             Predmet predmet = new Predmet();
             ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_plan_i_program", "ID_plan_i_program", pohadjanje.ID_plan_i_program);
             ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime"+" "+"Prezime", pohadjanje.ID_profesor);
+            ViewBag.ID_predmet = new SelectList(db.Predmet, "ID_pred", "Naziv", predmet.ID_Predmet);
+            ViewBag.ID_Student = new SelectList(db.Student, "ID_student", "JMBG", pohadjanje.ID_Student);
+            return View(pohadjanje);
+        }
+
+        public ActionResult Create2(int ID_profesor,int ID_predmet, DateTime Datum,int ID_Student=0)
+        {
+            Pohadjanje pohadjanje = new Pohadjanje();
+            pohadjanje.ID_Student = (int)Session["idstudent"];
+            pohadjanje.ID_profesor = ID_profesor;
+            //pohadjanje.ID_plan_i_program = ID_predmet;
+            var predmeti=db.Plan_i_program.Where(m => m.ID_predmet == ID_predmet).ToList();
+            if(predmeti.Count>0)
+            {
+                pohadjanje.ID_plan_i_program = predmeti.FirstOrDefault().ID_plan_i_program;
+            }
+            else
+            {
+                pohadjanje.ID_plan_i_program = null;
+            }
+            pohadjanje.Datum = Datum;
+            if (ModelState.IsValid)
+            {
+                db.Pohadjanje.Add(pohadjanje);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            Predmet predmet = new Predmet();
+            ViewBag.ID_plan_i_program = new SelectList(db.Plan_i_program, "ID_plan_i_program", "ID_plan_i_program", pohadjanje.ID_plan_i_program);
+            ViewBag.ID_profesor = new SelectList(db.Profesor, "ID_Prof", "Ime" + " " + "Prezime", pohadjanje.ID_profesor);
             ViewBag.ID_predmet = new SelectList(db.Predmet, "ID_pred", "Naziv", predmet.ID_Predmet);
             ViewBag.ID_Student = new SelectList(db.Student, "ID_student", "JMBG", pohadjanje.ID_Student);
             return View(pohadjanje);

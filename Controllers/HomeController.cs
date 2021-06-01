@@ -54,5 +54,12 @@ namespace Studentska_Sluzba.Controllers
 
             return View();
         }
+        public ActionResult Potvrde()
+        {
+
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
